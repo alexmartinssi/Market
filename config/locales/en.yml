@@ -45,3 +45,5 @@ en:
   product_update: "Produto atualizado com sucesso."
   product_destroy: "Produto apagado com sucesso."
   delete_product: "Deseja mesmo apagar este produto?"
+
+  bar_code: "Código de Barras"
