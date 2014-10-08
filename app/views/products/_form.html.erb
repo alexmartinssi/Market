@@ -12,30 +12,26 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :bar_code %><br>
-    <%= f.text_field :bar_code %>
+    <%= f.text_field :bar_code, placeholder: 'Código de Barra',class: 'form-control sel' %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>quantity
-  <div class="field">category_id
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
+    <%= f.text_field :description, placeholder: 'Descrição',class: 'form-control sel' %>
   </div>
   <div class="field">
-    <%= f.label :quantity %><br>
-    <%= f.number_field :quantity %>
+    <%= f.text_field :price, placeholder: 'Preço', class: 'form-control sel' %>
   </div>
   <div class="field">
-    <%= f.label :unit_id %><br>
-    <%= f.select :unit_id, options_for_select(Unit.all.map {|unit| [unit.description,unit.id]}) %>
+    <%= f.number_field :quantity, placeholder: 'Quantidade', class: 'form-control sel' %>
   </div>
   <div class="field">
-    <%= f.label :category_id %><br>
-    <%= f.select :category_id, options_for_select(Category.all.map {|category| [category.name,category.id]}) %>
+    <%= f.label :unit_id, t(:unit_choice) %><br>
+    <%= f.select :unit_id, options_for_select(Unit.all.map {|unit| [unit.description,unit.id]}), {}, class: 'form-control sel' %>
+  </div>
+  <div class="field">
+    <%= f.label :category_id, t(:category_choice) %><br>
+    <%= f.select :category_id, options_for_select(Category.all.map {|category| [category.name,category.id]}), {}, class: 'form-control sel' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit nil, class: 'btn btn-primary' %><%= link_to t(:back), products_path, class: 'btn btn-default back'%>
   </div>
 <% end %>

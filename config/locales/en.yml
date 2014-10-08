@@ -21,3 +21,21 @@
 
 en:
   hello: "Hello world"
+  helpers:
+    submit:
+      supplier:
+        create: "Adicionar Fornecedor"
+        update: "Atualizar Fornecedor"
+      unit:
+        create: "Adicionar Unidade"
+        update: "Atualizar Unidade"
+      product:
+        create: "Adicionar Produto"
+        update: "Atualizar Produto"
+      category:
+        create: "Adicionar Categoria"
+        update: "Atualizar Categoria"
+  category_choice: "Categoria"
+  unit_choice: "Unidade"
+  back: "Voltar"
+  new_product: "Novo Produto"
