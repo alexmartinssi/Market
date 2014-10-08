@@ -1,4 +1,4 @@
-<h1 class="subhead navbar navbar-inverse text-center alert">Listing products</h1>
+<h1 class="subhead navbar navbar-inverse text-center alert"><%= t(:listing_products) %></h1>
 
 <table class="table">
   <thead>
@@ -24,7 +24,7 @@
         <td><%= product.category.name %></td>
         <td><%= link_to '', product, class: 'btn btn-primary glyphicon glyphicon-th-list'%></td>
         <td><%= link_to '', edit_product_path(product), class: 'btn btn-warning glyphicon glyphicon-edit' %></td>
-        <td><%= link_to '', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger glyphicon glyphicon-trash'  %></td>
+        <td><%= link_to '', product, method: :delete, data: { confirm: t(:delete_product) }, class: 'btn btn-danger glyphicon glyphicon-trash'  %></td>
       </tr>
     <% end %>
   </tbody>
@@ -33,4 +33,4 @@
 <br>
 
 <%= link_to t(:new_product), new_product_path, class: 'btn btn-primary' %>
-<%= link_to t(:back), root_path, class: 'btn btn-default' %>
+<%= link_to t(:back), root_path, class: 'btn btn-default back2' %>

@@ -30,6 +30,9 @@
 </header>
 <div class="container side-collapse-container">
   <div class="row">
+    <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+    <% end %>
     <%= yield %>
   </div>
 </div>
