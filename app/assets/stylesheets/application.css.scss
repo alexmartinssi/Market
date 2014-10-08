@@ -1,0 +1,97 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *= require_tree .
+ *= require_self
+ *
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.account-wall {
+    margin-top: 0;
+}
+.name-strong{
+    color: black;
+}
+.link{
+    color: darkgreen;
+}
+.check{
+    min-height: 0;
+}
+#login-check{
+    position:relative;
+    left: 5px;
+    color:#555555;
+}
+
+.navbar-inverse{
+    color:#eeeeee;
+}
+
+table{
+    background-color: whitesmoke;
+}
+
+.first{
+    width: 30%;
+}
+
+.bt_first{
+    width: 49%;
+    height: 6%;
+}
+
+.new_bt_first{
+    position:relative;
+    float:right;
+    bottom: 44px;
+    width: 50%;
+    height: 6%;
+    right: 2px;
+}
+.cat{
+    position:relative;
+    float: right;
+    right: 1%;
+    margin: 20px 0;
+}
+.tam {
+    width: 100%;
+}
+.sel{
+    display: inline-block;
+    width: 32.8%;
+}
+.breadcrumbs li a{
+  color: #333333;
+}
+.field_with_errors{
+  display: block;
+  background-color: transparent;
+  @extend .has-error;
+}
+.bt_action{
+  width: 1px;
+  padding-right: 5px!important;
+  padding-left:  5px!important;
+}
+.banner{
+  width: auto;
+}
+.check2{
+  position: relative;
+  bottom: 40px;
+  width: 30px;
+  left: 250px;
+}
