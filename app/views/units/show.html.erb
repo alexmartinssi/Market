@@ -1,14 +1,18 @@
-<p id="notice"><%= notice %></p>
+<h2 class="subhead navbar text-center alert"><%= t(:details) %></h2>
 
-<p>
-  <strong>Description:</strong>
-  <%= @unit.description %>
-</p>
+<div class="scheduler-border">
 
-<p>
-  <strong>Acronym:</strong>
-  <%= @unit.acronym %>
-</p>
+    <p>
+      <strong><%= t(:description)%>:</strong>
+      <%= @unit.description %>
+    </p>
 
-<%= link_to 'Edit', edit_unit_path(@unit) %> |
-<%= link_to 'Back', units_path %>
+    <p>
+      <strong><%= t(:acronym)%>:</strong>
+      <%= @unit.acronym %>
+    </p>
+
+</div>
+
+<%= link_to t(:edit), edit_unit_path(@unit), class: 'btn btn-success' %>
+<%= link_to t(:back), units_path, class: 'btn btn-default back2' %>

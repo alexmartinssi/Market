@@ -21,6 +21,7 @@
 
 en:
   hello: "Hello world"
+  welcome: "Bem Vindo!"
   helpers:
     submit:
       supplier:
@@ -35,15 +36,44 @@ en:
       category:
         create: "Adicionar Categoria"
         update: "Atualizar Categoria"
+
   category_choice: "Categoria"
   unit_choice: "Unidade"
   edit: "Editar"
   back: "Voltar"
+  action: "Ação"
+  details: "Detalhes"
+  description: "Descrição"
+
+  #Produtos
   listing_products: "Produtos"
   new_product: "Novo Produto"
   product_create: "Produto criado com sucesso."
   product_update: "Produto atualizado com sucesso."
   product_destroy: "Produto apagado com sucesso."
-  delete_product: "Deseja mesmo apagar este produto?"
+  confirm_destroy: "Deseja mesmo apagar este produto?"
 
   bar_code: "Código de Barras"
+  description: "Descrição"
+  price: "Preço"
+  quantity: "Quantidade"
+  unit: "Unidade"
+  category: "Categoria"
+
+  editing_product: "Editar Produto"
+
+
+  #Categorias
+  listing_categories: "Categorias"
+  new_category: "Nova Categoria"
+  name: "Nome da Categoria"
+
+  editing_category: "Editar Categoria"
+
+  #Unidade
+  listing_units: "Unidades"
+  acronym: "Sigla"
+  new_unit: "Nova Unidade"
+
+  editing_unit: "Editar Unidade"
+

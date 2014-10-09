@@ -1,25 +1,25 @@
-<%= form_for(@unit) do |f| %>
-  <% if @unit.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@unit.errors.count, "error") %> prohibited this unit from being saved:</h2>
+<div class="text-center">
+    <%= form_for(@unit) do |f| %>
+      <% if @unit.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@unit.errors.count, "error") %> prohibited this unit from being saved:</h2>
 
-      <ul>
-      <% @unit.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% @unit.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :acronym %><br>
-    <%= f.text_field :acronym %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+      <div class="field">
+        <%= f.text_field :description, placeholder: 'Descrição',class: 'form-control sel' %>
+      </div>
+      <div class="field">
+        <%= f.text_field :acronym, placeholder: 'Sigla',class: 'form-control sel' %>
+      </div>
+      <div class="actions">
+        <%= f.submit nil, class: 'btn btn-primary' %><%= link_to t(:back), units_path, class: 'btn btn-default back'%>
+      </div>
+    <% end %>
+</div>

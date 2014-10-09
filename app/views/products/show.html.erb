@@ -1,32 +1,38 @@
-<p>
-  <strong>Bar code:</strong>
-  <%= @product.bar_code %>
-</p>
+<h2 class="subhead navbar text-center alert"><%= t(:details) %></h2>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+<div class="scheduler-border">
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
+    <p>
+      <strong><%= t(:bar_code)%>:</strong>
+      <%= @product.bar_code %>
+    </p>
 
-<p>
-  <strong>Quantity:</strong>
-  <%= @product.quantity %>
-</p>
+    <p>
+      <strong><%= t(:description)%>:</strong>
+      <%= @product.description %>
+    </p>
 
-<p>
-  <strong>Unit:</strong>
-  <%= @product.unit.description %> (<%= @product.unit.acronym %>)
-</p>
+    <p>
+      <strong><%= t(:price)%>:</strong>
+      <%= @product.price %>
+    </p>
 
-<p>
-  <strong>Category:</strong>
-  <%= @product.category.name %>
-</p>
+    <p>
+      <strong><%= t(:quantity)%>:</strong>
+      <%= @product.quantity %>
+    </p>
 
-<%= link_to t(:edit), edit_product_path(@product) %> |
-<%= link_to t(:back), products_path %>
+    <p>
+      <strong><%= t(:unit)%>:</strong>
+      <%= @product.unit.description %> (<%= @product.unit.acronym %>)
+    </p>
+
+    <p>
+      <strong><%= t(:category)%>:</strong>
+      <%= @product.category.name %>
+    </p>
+
+</div>
+
+<%= link_to t(:edit), edit_product_path(@product), class: 'btn btn-success' %>
+<%= link_to t(:back), products_path, class: 'btn btn-default back2' %>

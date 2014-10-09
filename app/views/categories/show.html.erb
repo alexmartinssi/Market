@@ -1,9 +1,13 @@
-<p id="notice"><%= notice %></p>
+<h2 class="subhead navbar text-center alert"><%= t(:details) %></h2>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
+<div class="scheduler-border">
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+    <p>
+      <strong><%= t(:name)%>:</strong>
+      <%= @category.name %>
+    </p>
+
+</div>
+
+<%= link_to t(:edit), edit_category_path(@category), class: 'btn btn-success' %>
+<%= link_to t(:back), categories_path, class: 'btn btn-default back2' %>
