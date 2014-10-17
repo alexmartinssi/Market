@@ -30,10 +30,10 @@ Unit.create([
 ])
 
 Product.create([
-    {bar_code: '31.1112.##############.55.011.000000001.1.00000001.8-procNFe', description: 'Arroz', price: 3.80, quantity: 30, unit_id:1, category_id:1},
-    {bar_code: '31.1112.##############.55.011.000000001.1.00000001.8-procNFe', description: 'Feijão', price: 3.80, quantity: 30, unit_id:1, category_id:1},
-    {bar_code: '31.1112.##############.55.011.000000001.1.00000001.8-procNFe', description: 'Sabonete', price: 3.80, quantity: 30, unit_id:2, category_id:1},
-    {bar_code: '31.1112.##############.55.011.000000001.1.00000001.8-procNFe', description: 'Carne', price: 3.80, quantity: 30, unit_id:7, category_id:1},
-    {bar_code: '31.1112.##############.55.011.000000001.1.00000001.8-procNFe', description: 'Peixe', price: 3.80, quantity: 30, unit_id:7, category_id:1},
-    {bar_code: '31.1112.##############.55.011.000000001.1.00000001.8-procNFe', description: 'Desodorante', price: 3.80, quantity: 30, unit_id:2, category_id:3}
+    {bar_code: '31.1112.##############.55.011.000000001.1.00000001.8-procNFe', description: 'Arroz', unit_id:1, category_id:1},
+    {bar_code: '31.1112.##############.55.011.000000001.1.00000001.8-procNFe', description: 'Feijão', unit_id:1, category_id:1},
+    {bar_code: '31.1112.##############.55.011.000000001.1.00000001.8-procNFe', description: 'Sabonete', unit_id:2, category_id:1},
+    {bar_code: '31.1112.##############.55.011.000000001.1.00000001.8-procNFe', description: 'Carne', unit_id:7, category_id:1},
+    {bar_code: '31.1112.##############.55.011.000000001.1.00000001.8-procNFe', description: 'Peixe', unit_id:7, category_id:1},
+    {bar_code: '31.1112.##############.55.011.000000001.1.00000001.8-procNFe', description: 'Desodorante', unit_id:2, category_id:3}
 ])

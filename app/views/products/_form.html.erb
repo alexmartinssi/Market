@@ -19,12 +19,6 @@
         <%= f.text_field :description, placeholder: 'Descrição',class: 'form-control sel' %>
       </div>
       <div class="field">
-        <%= f.text_field :price, placeholder: 'Preço', class: 'form-control sel' %>
-      </div>
-      <div class="field">
-        <%= f.number_field :quantity, placeholder: 'Quantidade', class: 'form-control sel' %>
-      </div>
-      <div class="field">
         <%= f.label :unit_id, t(:unit_choice) %><br>
         <%= f.select :unit_id, options_for_select(Unit.all.map {|unit| [unit.description,unit.id]}), {}, class: 'form-control sel' %>
       </div>

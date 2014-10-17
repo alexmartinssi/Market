@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141008001127) do
+ActiveRecord::Schema.define(version: 20141016221113) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -19,11 +19,20 @@ ActiveRecord::Schema.define(version: 20141008001127) do
     t.datetime "updated_at"
   end
 
+  create_table "items", force: true do |t|
+    t.integer  "product_id"
+    t.integer  "quantity"
+    t.float    "price",      limit: 24
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "items", ["product_id"], name: "index_items_on_product_id", using: :btree
+
   create_table "products", force: true do |t|
     t.string   "bar_code"
     t.string   "description"
     t.float    "price",       limit: 24
-    t.integer  "quantity"
     t.integer  "unit_id"
     t.integer  "category_id"
     t.datetime "created_at"
@@ -32,6 +41,26 @@ ActiveRecord::Schema.define(version: 20141008001127) do
 
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
   add_index "products", ["unit_id"], name: "index_products_on_unit_id", using: :btree
+
+  create_table "purchases", force: true do |t|
+    t.integer  "item_id"
+    t.float    "total",       limit: 24
+    t.integer  "supplier_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "purchases", ["item_id"], name: "index_purchases_on_item_id", using: :btree
+  add_index "purchases", ["supplier_id"], name: "index_purchases_on_supplier_id", using: :btree
+
+  create_table "sales", force: true do |t|
+    t.integer  "item_id"
+    t.float    "total",      limit: 24
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sales", ["item_id"], name: "index_sales_on_item_id", using: :btree
 
   create_table "suppliers", force: true do |t|
     t.string   "name"

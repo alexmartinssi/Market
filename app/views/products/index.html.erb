@@ -5,8 +5,6 @@
     <tr>
       <th class="text-center"><%= t(:bar_code)%></th>
       <th class="text-center"><%= t(:description)%></th>
-      <th class="text-center"><%= t(:price)%></th>
-      <th class="text-center"><%= t(:quantity)%></th>
       <th class="text-center"><%= t(:unit)%></th>
       <th class="text-center"><%= t(:category)%></th>
       <th colspan="3"  class="text-center"><%= t(:action)%></th>
@@ -18,8 +16,6 @@
       <tr>
         <td><%= product.bar_code %></td>
         <td><%= product.description %></td>
-        <td><%= product.price %></td>
-        <td><%= product.quantity %></td>
         <td><%= product.unit.description %> (<%= product.unit.acronym %>)</td>
         <td><%= product.category.name %></td>
         <td><%= link_to '', product, class: 'btn btn-default glyphicon glyphicon-th-list'%></td>
