@@ -1,14 +1,15 @@
-<p id="notice"><%= notice %></p>
+<h2 class="subhead navbar text-center alert"><%= t(:details) %></h2>
 
+<div class="scheduler-border">
 <p>
-  <strong>Name:</strong>
+  <strong><%= t(:name_suppliers)%>:</strong>
   <%= @supplier.name %>
 </p>
 
 <p>
-  <strong>Cnpj:</strong>
+  <strong><%= t(:cnpj)%>:</strong>
   <%= @supplier.cnpj %>
 </p>
-
-<%= link_to 'Edit', edit_supplier_path(@supplier) %> |
-<%= link_to 'Back', suppliers_path %>
+</div>
+<%= link_to t(:edit), edit_supplier_path(@supplier), class: 'btn btn-success' %>
+<%= link_to t(:back), suppliers_path, class: 'btn btn-default back2' %>

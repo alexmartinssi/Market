@@ -51,7 +51,7 @@ en:
   product_create: "Produto criado com sucesso."
   product_update: "Produto atualizado com sucesso."
   product_destroy: "Produto apagado com sucesso."
-  confirm_destroy: "Deseja mesmo apagar este produto?"
+  confirm_destroy: "Deseja mesmo apagar?"
 
   bar_code: "Código de Barras"
   description: "Descrição"
@@ -76,4 +76,11 @@ en:
   new_unit: "Nova Unidade"
 
   editing_unit: "Editar Unidade"
+
+  #Fornecedores
+  listing_suppliers: "Fornecedores"
+  name_suppliers: "Nome"
+  cnpj: "CNPJ"
+  new_supplier: "Novo Fornecedor"
+  editing_supplier: "Editar Fornecedor"
 

@@ -1,25 +1,26 @@
-<%= form_for(@supplier) do |f| %>
-  <% if @supplier.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@supplier.errors.count, "error") %> prohibited this supplier from being saved:</h2>
 
-      <ul>
-      <% @supplier.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="text-center">
+    <%= form_for(@supplier) do |f| %>
+      <% if @supplier.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@supplier.errors.count, "error") %> prohibited this supplier from being saved:</h2>
+
+          <ul>
+          <% @supplier.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :cnpj %><br>
-    <%= f.text_field :cnpj %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+      <div class="field">
+        <%= f.text_field :name, placeholder: 'Nome do Fornecedor',class: 'form-control sel' %>
+      </div>
+      <div class="field">
+        <%= f.text_field :cnpj, placeholder: 'CNPJ',class: 'form-control sel' %>
+      </div>
+      <div class="actions">
+        <%= f.submit nil, class: 'btn btn-primary' %><%= link_to t(:back), suppliers_path, class: 'btn btn-default back'%>
+      </div>
+    <% end %>
+</div>
