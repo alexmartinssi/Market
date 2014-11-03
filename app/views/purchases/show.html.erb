@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Total:</strong>
+  <%= @purchase.total %>
+</p>
+
+<p>
+  <strong>Supplier:</strong>
+  <%= @purchase.supplier.name %>
+</p>
+
+<%= link_to 'Edit', edit_purchase_path(@purchase) %>
+<%= link_to 'Back', purchases_path %>
+
+<h2>Items</h2>
+<% @purchase.items.each do |item| %>
+    <p>
+      <strong>Produto:</strong>
+      <%= item.product.description %>
+    </p>
+
+    <p>
+      <strong>Quantidade:</strong>
+      <%= item.quantity %>
+    </p>
+
+    <p>
+      <strong>Preço:</strong>
+      <%= item.price %>
+    </p>
+<% end %>
+<h2>Adicionar um Item</h2>
+<%= form_for([@purchase,@purchase.items.build]) do |f| %>
+    <div class="field">
+      <%= f.label :product_id %><br>
+      <%= f.select :product_id, options_for_select(Product.all.map{|product| [product.description, product.id]},
+                                                   selected: f.object.product_id)%>
+    </div>
+    <div class="field">
+      <%= f.label :quantity %><br>
+      <%= f.number_field :quantity %>
+    </div>
+    <div class="field">
+      <%= f.label :price %><br>
+      <%= f.text_field :price %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+
+<% end %>

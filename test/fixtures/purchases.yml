@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_id: 
+  total: 1.5
+  supplier_id: 
+
+two:
+  item_id: 
+  total: 1.5
+  supplier_id: 

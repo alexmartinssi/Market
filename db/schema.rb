@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141101202504) do
+ActiveRecord::Schema.define(version: 20141103011051) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -22,12 +22,14 @@ ActiveRecord::Schema.define(version: 20141101202504) do
   create_table "items", force: true do |t|
     t.integer  "product_id"
     t.integer  "quantity"
-    t.float    "price",      limit: 24
+    t.float    "price",       limit: 24
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "purchase_id"
   end
 
   add_index "items", ["product_id"], name: "index_items_on_product_id", using: :btree
+  add_index "items", ["purchase_id"], name: "index_items_on_purchase_id", using: :btree
 
   create_table "products", force: true do |t|
     t.string   "bar_code"
