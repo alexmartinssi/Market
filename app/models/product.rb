@@ -7,5 +7,5 @@ class Product < ActiveRecord::Base
   validates :bar_code, presence: true, allow_blank: false, length: {minimum: 3}
   validates :description, presence: true, allow_blank: false, length: {minimum: 3}
   validates :unit_id, presence: true, allow_blank: false, length: {minimum: 1}
-  validates :category_id_id, presence: true, allow_blank: false, length: {minimum: 1}
+  validates :category_id, presence: true, allow_blank: false, length: {minimum: 1}
 end

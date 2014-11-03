@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
+  resources :stocks
+
   root 'market#index'
 
-  resources :sales do
-    resources :items
-  end
+  #resources :sales do
+ #   resources :items
+#  end
 
   resources :purchases do
     resources :items
