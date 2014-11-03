@@ -12,6 +12,7 @@
 
 <%= link_to 'Edit', edit_purchase_path(@purchase) %>
 <%= link_to 'Back', purchases_path %>
+<%= link_to 'Finalizar Compra', finished_path(@purchase) %>
 
 <h2>Items</h2>
 <% @purchase.items.each do |item| %>

@@ -1,5 +1,5 @@
 class PurchasesController < ApplicationController
-  before_action :set_purchase, only: [:show, :edit, :update, :destroy]
+  before_action :set_purchase, only: [:show, :edit, :update, :destroy, :finished]
 
   # GET /purchases
   # GET /purchases.json
@@ -20,6 +20,19 @@ class PurchasesController < ApplicationController
   # GET /purchases/1/edit
   def edit
   end
+
+  def finished
+    @purchase.items.each do |item|
+      Stock.create!(
+          :item_id => item.id,
+          :supplier_id => @purchase.supplier_id,
+          :quantity => item.quantity,
+          :sale_price => item.price * 1.3
+      )
+    end
+    redirect_to stocks_path
+  end
+
 
   # POST /purchases
   # POST /purchases.json

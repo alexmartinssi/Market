@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :items
   end
 
+  get 'purchases/:id/finished' => 'purchases#finished', as: :finished
+
   resources :products
 
   resources :suppliers
