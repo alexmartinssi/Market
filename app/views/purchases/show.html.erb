@@ -1,53 +1,47 @@
-<p id="notice"><%= notice %></p>
+<h2 class="subhead navbar text-center alert"><%= t(:details) %></h2>
 
-<p>
-  <strong>Total:</strong>
-  <%= @purchase.total %>
-</p>
-
-<p>
-  <strong>Supplier:</strong>
-  <%= @purchase.supplier.name %>
-</p>
-
-<%= link_to 'Edit', edit_purchase_path(@purchase) %>
-<%= link_to 'Back', purchases_path %>
-<%= link_to 'Finalizar Compra', finished_path(@purchase) %>
-
-<h2>Items</h2>
-<% @purchase.items.each do |item| %>
-    <p>
-      <strong>Produto:</strong>
-      <%= item.product.description %>
-    </p>
+<div class="scheduler-border">
+  <p>
+    <strong>Fornecedor:</strong> <%= @purchase.supplier.name %>
+  </p>
+  <br/>
+  <fieldset>
+    <legend>Produtos</legend>
+    <% @purchase.items.each do |item| %>
+        <p>
+          <strong>Produto:</strong>
+          <%= item.product.description %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <strong>Quantidade:</strong>
+          <%= item.quantity %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <strong>Preço:</strong>
+          <%= item.price %>
+        </p>
+        <hr/>
+    <% end %>
 
     <p>
-      <strong>Quantidade:</strong>
-      <%= item.quantity %>
+      <strong>Total a Pagar:</strong>
+      <%= @purchase.total %>
     </p>
+  <br/>
+  </fieldset>
+  <fieldset>
+    <legend>Adicionar um Produto</legend>
+    <%= form_for([@purchase,@purchase.items.build]) do |f| %>
+        <div class="field">
+          <%= f.label :product_id, "Produto: " %>
+          <%= f.select :product_id, options_for_select(Product.all.map{|product| [product.description, product.id]},
+                                                       selected: f.object.product_id)%>
 
-    <p>
-      <strong>Preço:</strong>
-      <%= item.price %>
-    </p>
-<% end %>
-<h2>Adicionar um Item</h2>
-<%= form_for([@purchase,@purchase.items.build]) do |f| %>
-    <div class="field">
-      <%= f.label :product_id %><br>
-      <%= f.select :product_id, options_for_select(Product.all.map{|product| [product.description, product.id]},
-                                                   selected: f.object.product_id)%>
-    </div>
-    <div class="field">
-      <%= f.label :quantity %><br>
-      <%= f.number_field :quantity %>
-    </div>
-    <div class="field">
-      <%= f.label :price %><br>
-      <%= f.text_field :price %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-
-<% end %>
+          <%= f.label :quantity,"Quantidade: " %><%= f.number_field :quantity%>
+          <%= f.label :price,"Preço: " %><%= f.text_field :price%>
+          <%= f.submit nil, class: 'btn btn-success' %>
+        </div>
+    <% end %>
+    </fieldset>
+  <br/>
+  <div class="actions">
+      <%= link_to 'Finalizar Compra', finished_path(@purchase), class: 'btn btn-primary' %>
+      <%= link_to 'Back', purchases_path, class: 'btn btn-default back' %>
+  </div>
+</div>

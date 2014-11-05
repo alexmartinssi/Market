@@ -1,3 +1,4 @@
+<div class="text-center">
 <%= form_for(@purchase) do |f| %>
   <% if @purchase.errors.any? %>
     <div id="error_explanation">
@@ -12,10 +13,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :supplier_id %><br>
+    <%= f.label :supplier_id, "Fornecedor"%><br>
     <%= f.select :supplier_id, options_for_select(Supplier.all.map {|supplier| [supplier.name,supplier.id]}), {}, class: 'form-control sel' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit nil, class: 'btn btn-primary' %><%= link_to t(:back), purchases_path, class: 'btn btn-default back'%>
   </div>
 <% end %>
+</div>
