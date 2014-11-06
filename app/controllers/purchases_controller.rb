@@ -10,6 +10,11 @@ class PurchasesController < ApplicationController
   # GET /purchases/1
   # GET /purchases/1.json
   def show
+    @purchase.update(
+        total: @purchase.items.inject(0) do |sum, item|
+          sum + item.price
+        end
+    )
   end
 
   # GET /purchases/new
@@ -23,12 +28,21 @@ class PurchasesController < ApplicationController
 
   def finished
     @purchase.items.each do |item|
+      Stock.all.each do |stock|
+        if stock.item.product.description == item.product.description
+          stock.update(
+              :quantity => item.quantity+stock.quantity,
+              :sale_price => item.price * 1.3
+          )
+          return redirect_to (stocks_path)
+        end
+      end
       Stock.create!(
-          :item_id => item.id,
-          :supplier_id => @purchase.supplier_id,
-          :quantity => item.quantity,
-          :sale_price => item.price * 1.3
-      )
+            :item_id => item.id,
+            :supplier_id => @purchase.supplier_id,
+            :quantity => item.quantity,
+            :sale_price => item.price * 1.3
+        )
     end
     redirect_to stocks_path
   end

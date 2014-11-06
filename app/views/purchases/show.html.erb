@@ -20,7 +20,7 @@
     <% end %>
 
     <p>
-      <strong>Total a Pagar:</strong>
+      <strong>Valor total da compra:  R$</strong>
       <%= @purchase.total %>
     </p>
   <br/>
@@ -29,19 +29,17 @@
     <legend>Adicionar um Produto</legend>
     <%= form_for([@purchase,@purchase.items.build]) do |f| %>
         <div class="field">
-          <%= f.label :product_id, "Produto: " %>
+          <%= f.label :product_id, "Produto: " %>&nbsp;&nbsp;&nbsp;
           <%= f.select :product_id, options_for_select(Product.all.map{|product| [product.description, product.id]},
                                                        selected: f.object.product_id)%>
-
-          <%= f.label :quantity,"Quantidade: " %><%= f.number_field :quantity%>
-          <%= f.label :price,"Preço: " %><%= f.text_field :price%>
+          &nbsp;&nbsp;&nbsp;
+          <%= f.label :quantity,"Quantidade: " %>&nbsp;&nbsp;&nbsp;<%= f.number_field :quantity%>&nbsp;&nbsp;&nbsp;
+          <%= f.label :price,"Preço: " %>&nbsp;&nbsp;&nbsp;<%= f.text_field :price%>&nbsp;&nbsp;&nbsp;
           <%= f.submit nil, class: 'btn btn-success' %>
         </div>
     <% end %>
     </fieldset>
-  <br/>
-  <div class="actions">
-      <%= link_to 'Finalizar Compra', finished_path(@purchase), class: 'btn btn-primary' %>
-      <%= link_to 'Back', purchases_path, class: 'btn btn-default back' %>
-  </div>
 </div>
+<%= link_to 'Finalizar Compra', finished_path(@purchase), class: 'btn btn-primary' %>
+<%= link_to 'Back', purchases_path, class: 'btn btn-default back2' %>
+<br><br><br>
