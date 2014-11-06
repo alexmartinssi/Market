@@ -27,6 +27,7 @@ class PurchasesController < ApplicationController
   end
 
   def finished
+    exist = false
     @purchase.items.each do |item|
       Stock.all.each do |stock|
         if stock.item.product.description == item.product.description
@@ -34,16 +35,19 @@ class PurchasesController < ApplicationController
               :quantity => item.quantity+stock.quantity,
               :sale_price => item.price * 1.3
           )
-          return redirect_to (stocks_path)
+          exist = true
         end
       end
-      Stock.create!(
-            :item_id => item.id,
-            :supplier_id => @purchase.supplier_id,
-            :quantity => item.quantity,
-            :sale_price => item.price * 1.3
-        )
-    end
+
+      if exist == false
+          Stock.create!(
+              :item_id => item.id,
+              :supplier_id => @purchase.supplier_id,
+              :quantity => item.quantity,
+              :sale_price => item.price * 1.3
+          )
+        end
+      end
     redirect_to stocks_path
   end
 

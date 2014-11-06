@@ -39,6 +39,10 @@ en:
       purchase:
         create: "Adicionar Compra"
         update: "Atualizar Compra"
+      item:
+        create: "Adicionar Produto"
+        update: "Atualizar Produto"
+
 
   category_choice: "Categoria"
   unit_choice: "Unidade"
