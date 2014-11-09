@@ -27,7 +27,7 @@ class PurchasesController < ApplicationController
   end
 
   def finished
-    exist = false
+    """exist = false
     @purchase.items.each do |item|
       Stock.all.each do |stock|
         if stock.item.product.description == item.product.description
@@ -47,7 +47,25 @@ class PurchasesController < ApplicationController
               :sale_price => item.price * 1.3
           )
         end
+      end"""
+    @purchase.items.each do |item|
+      @stock = Stock.where(item_id: Item.joins(:stocks).where(product:item.product).take).take
+      if @stock.nil?
+        Stock.create!(
+            :item_id => item.id,
+            :supplier_id => @purchase.supplier_id,
+            :quantity => item.quantity,
+            :sale_price => item.price * 1.3
+        )
+      else
+        #@stock = Stock.where(item_id: @purchase_item).take
+        @stock.update(
+            :supplier_id => @purchase.supplier_id,
+            :quantity => item.quantity + @stock.quantity,
+            :sale_price => item.price * 1.3
+        )
       end
+    end
     redirect_to stocks_path
   end
 
