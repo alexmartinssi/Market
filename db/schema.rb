@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20141103011051) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "categories", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 20141103011051) do
   create_table "items", force: true do |t|
     t.integer  "product_id"
     t.integer  "quantity"
-    t.float    "price",       limit: 24
+    t.float    "price"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "purchase_id"
@@ -34,7 +37,7 @@ ActiveRecord::Schema.define(version: 20141103011051) do
   create_table "products", force: true do |t|
     t.string   "bar_code"
     t.string   "description"
-    t.float    "price",       limit: 24
+    t.float    "price"
     t.integer  "unit_id"
     t.integer  "category_id"
     t.datetime "created_at"
@@ -45,7 +48,7 @@ ActiveRecord::Schema.define(version: 20141103011051) do
   add_index "products", ["unit_id"], name: "index_products_on_unit_id", using: :btree
 
   create_table "purchases", force: true do |t|
-    t.float    "total",       limit: 24
+    t.float    "total"
     t.integer  "supplier_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -55,7 +58,7 @@ ActiveRecord::Schema.define(version: 20141103011051) do
 
   create_table "sales", force: true do |t|
     t.integer  "item_id"
-    t.float    "total",      limit: 24
+    t.float    "total"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -66,7 +69,7 @@ ActiveRecord::Schema.define(version: 20141103011051) do
     t.integer  "item_id"
     t.integer  "supplier_id"
     t.integer  "quantity"
-    t.float    "sale_price",  limit: 24
+    t.float    "sale_price"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
