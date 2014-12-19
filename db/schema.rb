@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20141103011051) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "categories", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -31,8 +28,8 @@ ActiveRecord::Schema.define(version: 20141103011051) do
     t.integer  "purchase_id"
   end
 
-  add_index "items", ["product_id"], name: "index_items_on_product_id", using: :btree
-  add_index "items", ["purchase_id"], name: "index_items_on_purchase_id", using: :btree
+  add_index "items", ["product_id"], name: "index_items_on_product_id"
+  add_index "items", ["purchase_id"], name: "index_items_on_purchase_id"
 
   create_table "products", force: true do |t|
     t.string   "bar_code"
@@ -44,8 +41,8 @@ ActiveRecord::Schema.define(version: 20141103011051) do
     t.datetime "updated_at"
   end
 
-  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
-  add_index "products", ["unit_id"], name: "index_products_on_unit_id", using: :btree
+  add_index "products", ["category_id"], name: "index_products_on_category_id"
+  add_index "products", ["unit_id"], name: "index_products_on_unit_id"
 
   create_table "purchases", force: true do |t|
     t.float    "total"
@@ -54,7 +51,7 @@ ActiveRecord::Schema.define(version: 20141103011051) do
     t.datetime "updated_at"
   end
 
-  add_index "purchases", ["supplier_id"], name: "index_purchases_on_supplier_id", using: :btree
+  add_index "purchases", ["supplier_id"], name: "index_purchases_on_supplier_id"
 
   create_table "sales", force: true do |t|
     t.integer  "item_id"
@@ -63,7 +60,7 @@ ActiveRecord::Schema.define(version: 20141103011051) do
     t.datetime "updated_at"
   end
 
-  add_index "sales", ["item_id"], name: "index_sales_on_item_id", using: :btree
+  add_index "sales", ["item_id"], name: "index_sales_on_item_id"
 
   create_table "stocks", force: true do |t|
     t.integer  "item_id"
@@ -74,8 +71,8 @@ ActiveRecord::Schema.define(version: 20141103011051) do
     t.datetime "updated_at"
   end
 
-  add_index "stocks", ["item_id"], name: "index_stocks_on_item_id", using: :btree
-  add_index "stocks", ["supplier_id"], name: "index_stocks_on_supplier_id", using: :btree
+  add_index "stocks", ["item_id"], name: "index_stocks_on_item_id"
+  add_index "stocks", ["supplier_id"], name: "index_stocks_on_supplier_id"
 
   create_table "suppliers", force: true do |t|
     t.string   "name"
