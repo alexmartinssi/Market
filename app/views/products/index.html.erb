@@ -18,9 +18,9 @@
         <td><%= product.description %></td>
         <td><%= product.unit.description %> (<%= product.unit.acronym %>)</td>
         <td><%= product.category.name %></td>
-        <td><%= link_to '', product, class: 'btn btn-default glyphicon glyphicon-th-list'%></td>
-        <td><%= link_to '', edit_product_path(product), class: 'btn btn-default glyphicon glyphicon-edit' %></td>
-        <td><%= link_to '', product, method: :delete, data: { confirm: t(:confirm_destroy) }, class: 'btn btn-default glyphicon glyphicon-trash'  %></td>
+        <td><%= link_to 'Detalhar', product, class: 'btn btn-info' %></td>
+        <td><%= link_to 'Editar', edit_product_path(product), class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Excluir', product, method: :delete, data: { confirm: t(:confirm_destroy) }, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>

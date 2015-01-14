@@ -12,7 +12,7 @@ class PurchasesController < ApplicationController
   def show
     @purchase.update(
         total: @purchase.items.inject(0) do |sum, item|
-          sum + item.price
+          sum + (item.price*item.quantity)
         end
     )
   end
@@ -25,50 +25,6 @@ class PurchasesController < ApplicationController
   # GET /purchases/1/edit
   def edit
   end
-
-  def finished
-    """exist = false
-    @purchase.items.each do |item|
-      Stock.all.each do |stock|
-        if stock.item.product.description == item.product.description
-          stock.update(
-              :quantity => item.quantity+stock.quantity,
-              :sale_price => item.price * 1.3
-          )
-          exist = true
-        end
-      end
-
-      if exist == false
-          Stock.create!(
-              :item_id => item.id,
-              :supplier_id => @purchase.supplier_id,
-              :quantity => item.quantity,
-              :sale_price => item.price * 1.3
-          )
-        end
-      end"""
-    @purchase.items.each do |item|
-      @stock = Stock.where(item_id: Item.joins(:stocks).where(product:item.product).take).take
-      if @stock.nil?
-        Stock.create!(
-            :item_id => item.id,
-            :supplier_id => @purchase.supplier_id,
-            :quantity => item.quantity,
-            :sale_price => item.price * 1.3
-        )
-      else
-        #@stock = Stock.where(item_id: @purchase_item).take
-        @stock.update(
-            :supplier_id => @purchase.supplier_id,
-            :quantity => item.quantity + @stock.quantity,
-            :sale_price => item.price * 1.3
-        )
-      end
-    end
-    redirect_to stocks_path
-  end
-
 
   # POST /purchases
   # POST /purchases.json
@@ -109,7 +65,51 @@ class PurchasesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
+  def add_item
+    @purchase = Purchase.find(params[:purchase_id])
+    @item = Item.find(params[:item_id])
+    
+    unless @purchase.items.include? @item
+      @purchase.items << @item
+    end
+    render action: 'show'
+  end
+  
+  def delete_item
+    @purchase = Purchase.find(params[:purchase_id])
+    @item = @purchase.items.find(params[:id])
+    
+    #Deletando jogador da equipe
+    if @item
+        @purchase.items.delete(@item)
+    end
+    render action: 'show'
+  end
+  
+    
+  def finished
+    @purchase.items.each do |item|
+      @stock = Stock.where(item_id: Item.joins(:stocks).where(product:item.product).take).take
+      if @stock.nil?
+        Stock.create!(
+            :item_id => item.id,
+            :supplier_id => @purchase.supplier_id,
+            :quantity => item.quantity,
+            :sale_price => item.price * 1.3
+        )
+      else
+        #@stock = Stock.where(item_id: @purchase_item).take
+        @stock.update(
+            :supplier_id => @purchase.supplier_id,
+            :quantity => item.quantity + @stock.quantity,
+            :sale_price => item.price * 1.3
+        )
+      end
+    end
+    redirect_to stocks_path
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_purchase
@@ -118,6 +118,6 @@ class PurchasesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def purchase_params
-      params.require(:purchase).permit(:supplier_id)
+      params.require(:purchase).permit(:total,:supplier_id)
     end
 end

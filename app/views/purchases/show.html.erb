@@ -4,7 +4,24 @@
   <p>
     <strong>Fornecedor:</strong> <%= @purchase.supplier.name %>
   </p>
-  <br/>
+
+  <fieldset>
+    <legend>Adicionar um Produto</legend>
+    <%= form_tag(purchases_add_item_path, method: "post") do %>
+      <div class="field">
+        <%= hidden_field_tag(:purchase_id, @purchase.id) %>
+        <%= label_tag :product_id, "Produto: " %>&nbsp;&nbsp;&nbsp;
+        <%= select_tag :product_id, options_for_select(Product.all.map{|product| [product.id, product.id]})%>
+        &nbsp;&nbsp;&nbsp;
+        <%= label_tag :quantity,"Quantidade: " %>&nbsp;&nbsp;&nbsp;
+        <%= number_field_tag :quantity%>&nbsp;&nbsp;&nbsp;
+        <%= label_tag :price,"Preço: " %>&nbsp;&nbsp;&nbsp;
+        <%= text_field_tag :price%>&nbsp;&nbsp;&nbsp;
+        <%= submit_tag "Adicionar", class: 'btn btn-success' %>
+      </div>
+    <% end %>
+  </fieldset>
+  
   <fieldset>
     <legend>Produtos</legend>
     <% @purchase.items.each do |item| %>
@@ -14,32 +31,17 @@
           <strong>Quantidade:</strong>
           <%= item.quantity %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <strong>Preço:</strong>
-          <%= item.price %>
+          <%= item.price %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <td><%= link_to 'Excluir item', [item.purchase, item], method: :delete, data: { confirm: t(:confirm_destroy)  }, class: 'btn btn-danger' %></td>
         </p>
         <hr/>
     <% end %>
-
     <p>
       <strong>Valor total da compra:  R$</strong>
       <%= @purchase.total %>
     </p>
   <br/>
   </fieldset>
-
-  <fieldset>
-    <legend>Adicionar um Produto</legend>
-    <%= form_for([@purchase,@purchase.items.build]) do |f| %>
-        <div class="field">
-          <%= f.label :product_id, "Produto: " %>&nbsp;&nbsp;&nbsp;
-          <%= f.select :product_id, options_for_select(Product.all.map{|product| [product.description, product.id]},
-                                                       selected: f.object.product_id)%>
-          &nbsp;&nbsp;&nbsp;
-          <%= f.label :quantity,"Quantidade: " %>&nbsp;&nbsp;&nbsp;<%= f.number_field :quantity%>&nbsp;&nbsp;&nbsp;
-          <%= f.label :price,"Preço: " %>&nbsp;&nbsp;&nbsp;<%= f.text_field :price%>&nbsp;&nbsp;&nbsp;
-          <%= f.submit nil, class: 'btn btn-success' %>
-        </div>
-    <% end %>
-    </fieldset>
 </div>
 <%= link_to 'Finalizar Compra', finished_path(@purchase), class: 'btn btn-primary' %>
 <%= link_to 'Voltar', purchases_path, class: 'btn btn-default back2' %>

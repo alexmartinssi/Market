@@ -1,34 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Mercado</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
+<%= render 'layouts/header' %>
 <body>
-<header role="banner" class="navbar navbar-fixed navbar-inverse">
-  <div class="container">
-    <div class="navbar-header">
-      <button data-toggle="collapse-side" data-target=".side-collapse" data-target-2=".side-collapse-container" type="button" class="navbar-toggle pull-left"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-    </div>
-    <div class="navbar-inverse side-collapse in">
-      <nav role="navigation" class="navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li class="<%= 'active' if "#{params[:controller]}" == 'market' %>"><%= link_to 'Home', root_path %></li>
-          <li class="<%= 'active' if "#{params[:controller]}" == 'categories' %>"><%= link_to 'Categorias', categories_path %></li>
-          <li class="<%= 'active' if "#{params[:controller]}" == 'units' %>"><%= link_to 'Unidades', units_path %></li>
-          <li class="<%= 'active' if "#{params[:controller]}" == 'products' %>"><%= link_to 'Produtos', products_path %></li>
-          <li class="<%= 'active' if "#{params[:controller]}" == 'suppliers' %>"><%= link_to 'Fornecedores', suppliers_path %></li>
-          <li class="<%= 'active' if "#{params[:controller]}" == 'purchases' %>"><%= link_to 'Compras', purchases_path %></li>
-          <li class="<%= 'active' if "#{params[:controller]}" == 'stocks' %>"><%= link_to 'Estoque', stocks_path %></li>
-          <!--<li class="<%= 'active' if "#{params[:controller]}" == 'sale' %>"><%= link_to 'Vendas', root_path %></li>
-          <li class="<%= 'active' if "#{params[:controller]}" == 'trades' %>"><%= link_to 'Trocas', root_path %></li>-->
-        </ul>
-      </nav>
-    </div>
-  </div>
-</header>
+<%= render 'layouts/head' %>
 <div class="container side-collapse-container">
   <div class="row">
     <% if notice %>

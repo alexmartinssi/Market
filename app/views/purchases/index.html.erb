@@ -19,9 +19,9 @@
         <td><%= purchase.supplier.name %></td>
         <!--<td><%= purchase.total %></td>-->
         <td><%= purchase.created_at.strftime("%d/%m/%Y")%></td>
-        <td><%= link_to '', purchase, class: 'btn btn-default glyphicon glyphicon-th-list' %></td>
-        <td><%= link_to '', edit_purchase_path(purchase), class: 'btn btn-default glyphicon glyphicon-edit' %></td>
-        <td><%= link_to '', purchase, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default glyphicon glyphicon-trash'%></td>
+        <td><%= link_to 'Comprar Mercadorias', purchase, class: 'btn btn-info' %></td>
+        <td><%= link_to 'Editar', edit_purchase_path(purchase), class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Excluir', purchase, method: :delete, data: { confirm: t(:confirm_destroy)  }, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>

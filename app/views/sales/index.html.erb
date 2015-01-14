@@ -14,9 +14,9 @@
       <tr>
         <td><%= sale.item %></td>
         <td><%= sale.total %></td>
-        <td><%= link_to 'Show', sale %></td>
-        <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
-        <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Detalhar', class: 'btn btn-info' %></td>
+        <td><%= link_to 'Editar', edit_sale_path(sale), class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Excluir', sale, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>

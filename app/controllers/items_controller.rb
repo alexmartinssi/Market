@@ -24,19 +24,6 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @purchase = Purchase.find(params[:purchase_id])
-    @item = @purchase.items.create(item_params)
-    redirect_to purchase_path(@purchase)
-
-    """respond_to do |format|
-      if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render :show, status: :created, location: @item }
-      else
-        format.html { render :new }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
-    end"""
   end
 
   # PATCH/PUT /items/1
