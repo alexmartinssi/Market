@@ -1,6 +1,3 @@
-Mini Market - Mini Mercado
+Mini Mercado
 
-O projeto consiste em um sistema mini mercado. 
-O sistema vai ter dois usuários:
-    * O usuário administrador, responsável por cadastrar os produtos,categoria, unidade, compras feitas pelo fornecedor e fornecedor;
-    * O usuário caixa, responsável pela venda.
+Projeto desenvolvido em Ruby on Rails que gerencia o fluxo de caixa de um mini mercado.
